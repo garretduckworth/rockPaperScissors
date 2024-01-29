@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script>
-        
+        function getComputerChoice(){
+            let choiceArray = ["Rock", "Paper", "Scissors"];
+            let max = (choiceArray.length - 1);
+            let randomSelectionValue = Math.floor(Math.random() * (max - 0 + 1));
+            let choice = choiceArray[randomSelectionValue];
+            return choice;
+        }
+        let compChoice = getComputerChoice();
+        console.log(compChoice);
+        function getPlayerChoice(){
+            let input = prompt("Rock, Paper, or Scissors?");
+            if (input===""){
+                getPlayerChoice();
+            }else{
+                let correctedInput = input.toLowerCase();
+                console.log(input);
+                if (correctedInput=="rock"||correctedInput=="paper"||correctedInput=="scissors"){
+                    console.log(correctedInput);
+                }else{
+                    alert("Check spelling or select from the three.");
+                    getPlayerChoice();
+                }
+            }
+            }
+        getPlayerChoice();
+        console.log(getPlayerChoice);
     </script>
 </head>
 <body>
