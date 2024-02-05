@@ -5,32 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script>
+            
         function getComputerChoice(){
-            let choiceArray = ["Rock", "Paper", "Scissors"];
+            let choiceArray = ["rock", "paper", "scissors"];
             let max = (choiceArray.length - 1);
             let randomSelectionValue = Math.floor(Math.random() * (max - 0 + 1));
             let choice = choiceArray[randomSelectionValue];
+            console.log(choice);
             return choice;
         }
-        let compChoice = getComputerChoice();
-        console.log(compChoice);
+        let playerScore = 0;
+        let compScore = 0;
         function getPlayerChoice(){
-            let input = prompt("Rock, Paper, or Scissors?");
+                let compChoice = getComputerChoice();
+                let input = prompt("Rock, Paper, or Scissors?");
             if (input===""){
                 getPlayerChoice();
             }else{
                 let correctedInput = input.toLowerCase();
                 console.log(input);
                 if (correctedInput=="rock"||correctedInput=="paper"||correctedInput=="scissors"){
-                    console.log(correctedInput);
+                    if (correctedInput===compChoice){
+                        alert("Boring, a tie");
+                        getPlayerChoice();                        
+                    } else{
+                        if(correctedInput=="rock"){
+                            if (compChoice=="scissors"){
+                                alert(correctedInput + " beats " + compChoice + ". You win.");
+                                playerScore++;
+                            }else{
+                                alert(correctedInput + " loses to " + compChoice + ". Computer wins");
+                                compScore++;
+                            }
+                        }else if (correctedInput=="scissors"){
+                            if (compChoice=="paper"){
+                                alert(correctedInput + " beats " + compChoice + ". You win.");
+                                playerScore++;
+                            }else{
+                                alert(correctedInput + " loses to " + compChoice + ". Computer wins");
+                                compScore++;
+                            }
+                        }else{
+                            if (compChoice=="rock"){
+                                alert(correctedInput + " beats " + compChoice + ". You win.");
+                                playerScore++;
+                            }else{
+                                alert(correctedInput + " loses to " + compChoice + ". Computer wins");
+                                compScore++;
+                            }
+                        }while(compScore < 3 && playerScore < 3){
+                            console.log("Player Score: " + playerScore);
+                            console.log("Computer Score: " + compScore);
+                            getPlayerChoice();
+                        }
+                    }
+                        
                 }else{
-                    alert("Check spelling or select from the three.");
+                    alert("The game is rock paper scissors, those are your only choices.");
                     getPlayerChoice();
                 }
             }
             }
         getPlayerChoice();
-        console.log(getPlayerChoice);
+        if (playerScore === 3){
+            alert("YOU WON!");
+        }else {
+            alert("The computer won, you suck.");
+        }
     </script>
 </head>
 <body>
